@@ -1,9 +1,8 @@
-const path=require('path');
+
 
 const express=require('express');
 
-const rootDir=require('../util/path');
-
+const shopController=require('../controller/shops');
 const router=express.Router();
 
 /*router.get('/',(req, res, next )=>{
@@ -11,8 +10,5 @@ const router=express.Router();
     res.send('<h1>Hello from express.js!</h1>');
 });*/
 
-router.get('/',(req, res, next )=>{
-    console.log('in the another middleware!'); 
-    res.sendFile(path.join(rootDir,'views','shop.html'));
-});
+router.get('/',shopController.controllergetShop);
 module.exports=router;

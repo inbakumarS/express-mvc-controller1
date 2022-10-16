@@ -2,20 +2,13 @@ const path=require('path');
 
 const express=require('express');
 
-const rootDir=require('../util/path')
-
+//const rootDir=require('../util/path')
+const contactController=require('../controller/contactus');
 const router=express.Router();
 
-router.get('/contact-us',(req , res , next)=>{
-    console.log('in the middleware!');
+router.get('/contact-us',contactController.contactgetController);
 
-    res.sendFile(path.join(rootDir,'views','contact.html'));
-});
+router.post('/contact-us',contactController.contactpostController);
 
-router.post('/contact-us',(req, res, next)=>{
-    console.log(req.body);
-    res.sendFile(path.join(rootDir,'views','success.html'));
-    
-});
 
 module.exports=router;
